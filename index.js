@@ -105,7 +105,7 @@ var createNode = (vdom, listener, isSvg) => {
   }
 
   for (var i = 0; i < vdom.children.length; i++) {
-    node.appendChild(
+    node.append(
       createNode(
         (vdom.children[i] = maybeVNode(vdom.children[i])),
         listener,
