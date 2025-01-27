@@ -56,7 +56,7 @@ var patchSubs = (oldSubs, newSubs = EMPTY_ARR, dispatch) => {
               (oldSub && oldSub[2](), newSub[0](dispatch, newSub[1])),
             ]
           : oldSub
-        : oldSub && oldSub[2]()
+        : (oldSub && oldSub[2](), false)
     )
   }
   return subs
