@@ -131,7 +131,7 @@ var patch = (parent, node, oldVNode, newVNode, listener, isSvg) => {
       node
     )
     if (oldVNode != null) {
-      parent.removeChild(oldVNode.node)
+      oldVNode.node.remove()
     }
   } else {
     var tmpVKid
@@ -218,7 +218,7 @@ var patch = (parent, node, oldVNode, newVNode, listener, isSvg) => {
       }
     } else if (newHead > newTail) {
       while (oldHead <= oldTail) {
-        node.removeChild(oldVKids[oldHead++].node)
+        oldVKids[oldHead++].node.remove()
       }
     } else {
       for (var keyed = {}, newKeyed = {}, i = oldHead; i <= oldTail; i++) {
@@ -238,7 +238,7 @@ var patch = (parent, node, oldVNode, newVNode, listener, isSvg) => {
           (newKey != null && newKey === getKey(oldVKids[oldHead + 1]))
         ) {
           if (oldKey == null) {
-            node.removeChild(oldVKid.node)
+            oldVKid.node.remove()
           }
           oldHead++
           continue
@@ -297,13 +297,13 @@ var patch = (parent, node, oldVNode, newVNode, listener, isSvg) => {
 
       while (oldHead <= oldTail) {
         if (getKey((oldVKid = oldVKids[oldHead++])) == null) {
-          node.removeChild(oldVKid.node)
+          oldVKid.node.remove()
         }
       }
 
       for (var i in keyed) {
         if (newKeyed[i] == null) {
-          node.removeChild(keyed[i].node)
+          keyed[i].node.remove()
         }
       }
     }
